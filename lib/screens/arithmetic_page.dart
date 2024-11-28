@@ -1,50 +1,136 @@
 import 'package:flutter/material.dart';
 
-class ArithmeticPage extends StatelessWidget {
-  final TextEditingController num1Controller = TextEditingController();
-  final TextEditingController num2Controller = TextEditingController();
+class ArithmeticView extends StatefulWidget {
+  const ArithmeticView({super.key});
 
+  @override
+  ArithmeticViewState createState() => ArithmeticViewState();
+}
+
+class ArithmeticViewState extends State<ArithmeticView> {
+  int _firstNumber = 0;
+  int _secondNumber = 0;
+  int _result = 0;
+
+// global key for form state
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Arithmetic Operations')),
+      backgroundColor: Colors.yellow[100],
+      appBar: AppBar(
+        title: const Text('Arithmetic Operations'),
+        centerTitle: true,
+        backgroundColor: Colors.red,
+        elevation: 0,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: num1Controller,
-              decoration: InputDecoration(labelText: 'Enter first number'),
-              keyboardType: TextInputType.number,
-            ),
-            TextField(
-              controller: num2Controller,
-              decoration: InputDecoration(labelText: 'Enter second number'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                int num1 = int.parse(num1Controller.text);
-                int num2 = int.parse(num2Controller.text);
-
-                int sum = num1 + num2;
-                int difference = num1 - num2;
-                int product = num1 * num2;
-                double quotient = num2 != 0 ? num1 / num2 : 0;
-
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    content: Text(
-                      'Results:\nAddition: $sum\nSubtraction: $difference\nMultiplication: $product\nDivision: $quotient',
-                    ),
+        padding: const EdgeInsets.all(8.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                onChanged: (value) {
+                  _firstNumber = int.tryParse(value) ?? 0;
+                },
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter First No',
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Enter first no';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              TextFormField(
+                onChanged: (value) {
+                  _secondNumber = int.tryParse(value) ?? 0;
+                },
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter Second No',
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Enter second no';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                'Result : $_result',
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
                   ),
-                );
-              },
-              child: Text('Calculate'),
-            ),
-          ],
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      setState(() {
+                        _result = _firstNumber + _secondNumber;
+                      });
+                    }
+                  },
+                  child: const Text('Addition'),
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.yellow,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _result = _firstNumber - _secondNumber;
+                    });
+                  },
+                  child: const Text('Subtraction'),
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.lightBlueAccent,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _result = _firstNumber * _secondNumber;
+                    });
+                  },
+                  child: const Text('Multiplication'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

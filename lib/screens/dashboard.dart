@@ -43,7 +43,7 @@ class _DashboardState extends State<Dashboard> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ArithmeticPage()));
+                            builder: (context) => ArithmeticView()));
                   },
                   child: Text('Arithmetic'),
                 ),
