@@ -21,7 +21,7 @@ class ArithmeticViewState extends State<ArithmeticView> {
       appBar: AppBar(
         title: const Text('Arithmetic Operations'),
         centerTitle: true,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.green,
         elevation: 0,
       ),
       body: Padding(

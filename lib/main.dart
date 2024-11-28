@@ -1,5 +1,5 @@
+import 'package:first_assignment/screens/column_screen_state.dart';
 import 'package:flutter/material.dart';
-import 'screens/dashboard.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'First Assignment',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: Dashboard(),
+      home: ColumnScreen(),
     );
   }
 }
