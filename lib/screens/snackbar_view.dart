@@ -10,11 +10,11 @@ class SnackbarView extends StatefulWidget {
 
 class _SnackbarViewState extends State<SnackbarView> {
   _showSnackBar() {
-    showMySnackbar(context, "show buttton 1");
+    showMySnackBar(context, "show buttton 1");
   }
 
   _showSnackBar2() {
-    showMySnackbar(context, "show buttton 2", color: Colors.red);
+    showMySnackBar(context, "show buttton 2", color: Colors.red);
   }
 
   @override
