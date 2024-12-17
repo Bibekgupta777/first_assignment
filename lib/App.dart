@@ -5,8 +5,10 @@
 // import 'package:first_assignment/screens/my_list_view.dart';
 
 // import 'package:first_assignment/screens/data_table_view.dart';
-import 'package:first_assignment/screens/stack_view.dart';
+// import 'package:first_assignment/screens/stack_view.dart';
 // import 'package:first_assignment/screens/my_grid_view.dart';
+import 'package:first_assignment/core/app_theme/app_theme.dart';
+import 'package:first_assignment/screens/buttom_navigation_view.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -14,9 +16,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: getApplicationTheme(),
       debugShowCheckedModeBanner: false,
-      home: StackView(),
+      home: const BottomNavigationView(),
     );
   }
 }

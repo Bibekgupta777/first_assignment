@@ -1,3 +1,6 @@
 {
-    "cmake.sourceDirectory": "C:/Desktop/first_assignment/linux"
+    "cmake.sourceDirectory": "C:/Desktop/first_assignment/linux",
+    "cSpell.words": [
+        "mysnackbar"
+    ]
 }

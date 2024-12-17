@@ -1,4 +1,4 @@
-import 'package:first_assignment/commons/mysnackbar.dart';
+import 'package:first_assignment/core/commons/mysnackbar.dart';
 import 'package:first_assignment/screens/card_view.dart';
 
 import 'package:flutter/material.dart';
